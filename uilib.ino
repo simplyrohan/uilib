@@ -1,22 +1,21 @@
 #include "ui.h"
 
-#define TFT_CS A2
-#define TFT_RST A1 // Or set to -1 and connect to Arduino RESET pin
-#define TFT_DC A0
+#define TFT_CS 10
+#define TFT_RST -1 // Or set to -1 and connect to Arduino RESET pin
+#define TFT_DC 8
 
-ST7735 tft(TFT_CS, TFT_DC, TFT_RST);
-
-Text text("Hello, world!", Font(2));
+TFT tft = TFT(TFT_CS, TFT_DC, TFT_RST);
 
 void setup(void)
 {
     Serial.begin(115200);
 
-    // tft.initR(INITR_BLACKTAB); // Init ST7735S chip, black tab
-    // tft.setBgColor(0, 0, 255); // Blue
-    text.draw(tft, {0, 0});
+    tft.begin();
+    delay(2000);
+    tft.setBackgroundColor(0xeb34c3);
 }
 
 void loop()
 {
+    
 }
